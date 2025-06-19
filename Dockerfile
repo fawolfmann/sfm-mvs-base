@@ -89,7 +89,7 @@ RUN cd glomap && \
         -DCMAKE_CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES} \
         -DSuiteSparse_CHOLMOD_LIBRARY="/usr/lib/x86_64-linux-gnu/libcholmod.so" \
         -DSuiteSparse_CHOLMOD_INCLUDE_DIR="/usr/include/suitesparse" \
-        -DTESTS_ENABLED=ON \
+        -DTESTS_ENABLED=OFF \
         -DASAN_ENABLED=false && \
     ninja install
 RUN cp -r /glomap_installed/* /usr/local/
