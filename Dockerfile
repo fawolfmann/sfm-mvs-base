@@ -1,10 +1,9 @@
 ARG UBUNTU_VERSION=22.04
 ARG NVIDIA_CUDA_VERSION=12.3.1
-ARG CUDA_ARCHITECTURES="75;80;86" 
 # check you arch https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/#gpu-feature-list
 
 FROM --platform=linux/amd64 nvidia/cuda:${NVIDIA_CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
-
+ENV CUDA_ARCHITECTURES="75;80;86"
 ENV QT_XCB_GL_INTEGRATION=xcb_egl
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -67,7 +66,6 @@ ENV CUDAHOSTCXX=/usr/bin/g++-10
 
 # Build and install COLMAP
 RUN git clone https://github.com/colmap/colmap.git
-RUN echo ${CUDA_ARCHITECTURES}
 
 RUN cd colmap && \
     mkdir build && \
